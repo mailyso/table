@@ -1,7 +1,7 @@
 import Table from './table';
 import * as $ from './utils/dom';
 
-import { IconTable, IconTableWithHeadings, IconTableWithoutHeadings, IconCollapse } from '@codexteam/icons';
+import { IconTable, IconTableWithHeadings, IconTableWithoutHeadings, IconCollapse, IconStretch } from '@codexteam/icons';
 
 /**
  * @typedef {object} TableConfig - configuration that the user can set for the table
@@ -131,8 +131,18 @@ export default class TableBlock {
         closeOnActivate: true,
         toggle: true,
         onActivate: () => {
+          this.data.fixedLayout = true;
+          this.table.setLayoutSetting(this.data.fixedLayout);
+        }
+      }, {
+        label: this.api.i18n.t('Fixed layout'),
+        icon: IconStretch,
+        isActive: this.data.fixedLayout,
+        closeOnActivate: true,
+        toggle: true,
+        onActivate: () => {
           this.data.fixedLayout = false;
-          this.table.setHeadingsSetting(this.data.fixedLayout);
+          this.table.setLayoutSetting(this.data.fixedLayout);
         }
       }
     ];
