@@ -17,6 +17,7 @@ const CSS = {
   table: 'tc-table',
   row: 'tc-row',
   withHeadings: 'tc-table--heading',
+  fixedLayout: 'tc-table--fixed',
   rowSelected: 'tc-row--selected',
   cell: 'tc-cell',
   cellSelected: 'tc-cell--selected',
@@ -74,7 +75,8 @@ export default class Table {
 
     // Additional settings for the table
     this.tunes = {
-      withHeadings: false
+      withHeadings: false,
+      fixedLayout: false,
     };
 
     /**
@@ -752,6 +754,21 @@ export default class Table {
     } else {
       this.table.classList.remove(CSS.withHeadings);
       this.removeHeadingAttrFromFirstRow();
+    }
+  }
+
+  /**
+   * Set table layout to be fixed
+   *
+   * @param {boolean} fixedLayout - toggle the table layout setting
+   */
+  setLayoutSetting(fixedLayout) {
+    this.tunes.fixedLayout = fixedLayout;
+
+    if (fixedLayout) {
+      this.table.classList.add(CSS.fixedLayout);
+    } else {
+      this.table.classList.remove(CSS.fixedLayout);
     }
   }
 

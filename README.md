@@ -60,6 +60,7 @@ var editor = EditorJS({
 | `rows`             | `number` | initial number of rows. `2`  by default |
 | `cols`             | `number` | initial number of columns. `2` by default |
 | `withHeadings`             | `boolean` | toggle table headings. `false` by default |
+| `fixedLayout`             | `boolean` | toggle the table layout setting. `false` by default |
 
 ## Output data
 
@@ -68,6 +69,7 @@ This Tool returns `data` in the following format
 | Field          | Type         | Description           |
 | -------------- | ------------ | ----------------------------------------- |
 | `withHeadings` | `boolean`    | Uses the first line as headings |
+| `fixedLayout` | `boolean`    | Set table layout to be fixed |
 | `content`      | `string[][]` | two-dimensional array with table contents |
 
 ```json
@@ -75,6 +77,7 @@ This Tool returns `data` in the following format
   "type" : "table",
   "data" : {
     "withHeadings": true,
+    "fixedLayout": true,
     "content" : [ [ "Kine", "Pigs", "Chicken" ], [ "1 pcs", "3 pcs", "12 pcs" ], [ "100$", "200$", "150$" ] ]
   }
 }

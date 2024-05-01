@@ -1,7 +1,7 @@
 import Table from './table';
 import * as $ from './utils/dom';
 
-import { IconTable, IconTableWithHeadings, IconTableWithoutHeadings } from '@codexteam/icons';
+import { IconTable, IconTableWithHeadings, IconTableWithoutHeadings, IconCollapse } from '@codexteam/icons';
 
 /**
  * @typedef {object} TableConfig - configuration that the user can set for the table
@@ -58,6 +58,7 @@ export default class TableBlock {
     this.config = config;
     this.data = {
       withHeadings: this.getConfig('withHeadings', false, data),
+      fixedLayout: this.getConfig('fixedLayout', false, data),
       content: data && data.content ? data.content : []
     };
     this.table = null;
@@ -91,6 +92,7 @@ export default class TableBlock {
     this.container.appendChild(this.table.getWrapper());
 
     this.table.setHeadingsSetting(this.data.withHeadings);
+    this.table.setLayoutSetting(this.data.fixedLayout);
 
     return this.container;
   }
@@ -122,6 +124,16 @@ export default class TableBlock {
           this.data.withHeadings = false;
           this.table.setHeadingsSetting(this.data.withHeadings);
         }
+      }, {
+        label: this.api.i18n.t('Fixed layout'),
+        icon: IconCollapse,
+        isActive: this.data.fixedLayout,
+        closeOnActivate: true,
+        toggle: true,
+        onActivate: () => {
+          this.data.fixedLayout = false;
+          this.table.setHeadingsSetting(this.data.fixedLayout);
+        }
       }
     ];
   }
@@ -135,6 +147,7 @@ export default class TableBlock {
 
     const result = {
       withHeadings: this.data.withHeadings,
+      fixedLayout: this.data.fixedLayout,
       content: tableContent
     };
 
@@ -203,6 +216,7 @@ export default class TableBlock {
     /** Update Tool's data */
     this.data = {
       withHeadings: firstRowHeading !== null,
+      fixedLayout: false,
       content
     };
 
