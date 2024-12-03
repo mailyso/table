@@ -131,15 +131,6 @@ export default class TableBlock {
           this.data.withHeadings = false;
           this.table.setHeadingsSetting(this.data.withHeadings);
         }
-      }, {
-        label: this.data.stretched ? this.api.i18n.t('Collapse') : this.api.i18n.t('Stretch'),
-        icon: this.data.stretched ? IconCollapse : IconStretch,
-        closeOnActivate: true,
-        toggle: true,
-        onActivate: () => {
-          this.data.stretched = !this.data.stretched;
-          this.block.stretched = this.data.stretched;
-        }
       }
     ];
   }
