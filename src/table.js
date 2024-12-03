@@ -996,7 +996,12 @@ export default class Table {
         continue;
       }
 
-      data.push(cells.map(cell => cell.innerHTML));
+      data.push(
+          cells.map(cell => {
+            // preserve `<br>` tag as \n
+            return cell.innerHTML.replace(/<br\s*\/?>/gi, '\n');
+          })
+      );
     }
 
     return data;

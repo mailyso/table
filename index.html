@@ -43,6 +43,7 @@
 
   <script type="module">
     import Table from './src/index'
+
     const editor = new EditorJS({
       autofocus: true,
       tools: {
@@ -52,7 +53,7 @@
           config: {
             withHeadings: true,
             maxRows: 5,
-            maxCols: 5
+            maxCols: 5,
           }
         }
       },
@@ -67,7 +68,7 @@
               content: [
                 ["English", "Russian", "Japanese"], 
                 ["Sweet", "Сладкий", "あまい"], 
-                ["Good morning", "Доброе утро", "おはようございます"]]
+                ["Good morning<br><br>Vietnam!", "Доброе утро", "おはようございます"]]
             }
           }
         ],
